@@ -5,6 +5,7 @@ lib/
 node_modules
 
 # tests
+coverage/
 
 # logs
 npm-debug.log*
