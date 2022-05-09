@@ -1,25 +1,36 @@
 {
   "name": "space-log",
   "description": "A simple utility for logging tabular data to the terminal.",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/01taylop/spacelog"
+    "url": "https://github.com/01taylop/space-log"
   },
-  "version": "1.0.0",
-  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs"
+    }
+  },
   "files": [
-    "src/index.js",
+    "lib",
     "README.md"
   ],
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "build": "rimraf lib && babel src -d lib --out-file-extension .cjs && cp src/index.mjs lib/",
+    "test": "jest"
+  },
+  "dependencies": {
+    "chalk": "5.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "7.17.10",
     "@babel/core": "7.17.10",
+    "@babel/plugin-transform-modules-commonjs": "7.17.9",
     "@babel/preset-env": "7.17.10",
     "babel-jest": "28.1.0",
-    "jest": "28.1.0"
+    "jest": "28.1.0",
+    "rimraf": "3.0.2"
   },
   "keywords": [
     "space-log",
