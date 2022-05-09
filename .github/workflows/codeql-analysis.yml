@@ -4,7 +4,6 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [ main ]
   schedule:
     - cron: '34 21 * * 1'
@@ -35,7 +34,7 @@ jobs:
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
 
-    #   If the Autobuild fails above, remove it and uncomment the following three lines. 
+    #   If the Autobuild fails above, remove it and uncomment the following three lines.
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
     # - run: |

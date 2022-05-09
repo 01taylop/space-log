@@ -1,2 +1,4 @@
-ignores: []
+ignores: [
+  "chalk"
+]
 skip-missing: true
