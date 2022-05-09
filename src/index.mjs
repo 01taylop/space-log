@@ -1,46 +1,54 @@
 import chalk from 'chalk'
 
-const log = (config, data) => {
-  const { columnKeys, headings } = config
+const defaultHeading = 'Unknown'
 
-  // Intentional Spacing
-  console.log()
+const spaceLog = (config, data) => {
+  try {
+    const { columnKeys, headings } = config
 
-  // Calculate Column Width
-  const columnWidths = {}
+    // Intentional Spacing
+    console.log('')
 
-  columnKeys.forEach((key, index) => {
-    const headingLength = headings[index].length
-    const dataLengths = data.map(item => item[key].length)
+    // Calculate Column Width
+    const columnWidths = {}
 
-    columnWidths[key] = Math.max(headingLength, ...dataLengths) + 1
-  })
+    columnKeys.forEach((key, index) => {
+      const headingLength = headings[index]?.length || defaultHeading.length
+      const dataLengths = data.map(item => item[key]?.length || 0)
 
-  // Log Headings
-  const headingLine = columnKeys.map((key, index) => {
-    const title = headings[index] || 'Unknown'
-    const spacing = columnWidths[key] - title.length
-    return `${chalk.underline(title)}${' '.repeat(spacing)}`
-  }).join('')
-  console.log(headingLine)
-
-  // Log Data
-  data.forEach(item => {
-    let line = ''
-    columnKeys.map(key => {
-      const text = item[key] || '-'
-      const spacing = columnWidths[key] - text.length
-      const theme = item[`${key}Theme`] || null
-      const styledText = theme ? theme(text) : text
-      line = `${line}${styledText}${' '.repeat(spacing)}`
+      columnWidths[key] = Math.max(headingLength, ...dataLengths) + 1
     })
-    console.log(line)
-  })
 
-  // Intentional Spacing
-  console.log()
+    // Log Headings
+    const headingLine = columnKeys.map((key, index) => {
+      const title = headings[index] || 'Unknown'
+      const spacing = columnWidths[key] - title.length
+      return `${chalk.underline(title)}${' '.repeat(spacing)}`
+    }).join('')
+    console.log(headingLine.trim())
+
+    // Log Data
+    data.forEach(item => {
+      let line = ''
+      columnKeys.map(key => {
+        const text = item[key] || '-'
+        const spacing = columnWidths[key] - text.length
+        const theme = item[`${key}Theme`] || null
+        const styledText = theme ? theme(text) : text
+        line = `${line}${styledText}${' '.repeat(spacing)}`
+      })
+      console.log(line.trim())
+    })
+
+    // Intentional Spacing
+    console.log('')
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 export {
-  log,
+  spaceLog,
 }
+
+export default spaceLog
