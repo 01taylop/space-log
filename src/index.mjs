@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-const log = (config, data) => {
+const spaceLog = (config, data) => {
   const { columnKeys, headings } = config
 
   // Intentional Spacing
@@ -42,5 +42,7 @@ const log = (config, data) => {
 }
 
 export {
-  log,
+  spaceLog,
 }
+
+export default spaceLog

@@ -1,11 +1,13 @@
 {
   "name": "space-log",
   "description": "A simple utility for logging tabular data to the terminal.",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/01taylop/space-log"
   },
+  "type": "module",
+  "main": "./lib/index.cjs",
   "exports": {
     ".": {
       "require": "./lib/index.cjs",
@@ -16,12 +18,16 @@
     "lib",
     "README.md"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "rimraf lib && babel src -d lib --out-file-extension .cjs && cp src/index.mjs lib/",
+    "publishLib": "yarn build && npm publish",
     "test": "jest"
   },
   "dependencies": {
-    "chalk": "5.0.1"
+    "chalk": "4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "7.17.10",
