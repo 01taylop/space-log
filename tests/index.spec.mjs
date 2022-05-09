@@ -10,7 +10,7 @@ describe('spaceLog', () => {
   const mockedErrorLog = jest.spyOn(console, 'error').mockImplementation(text => text)
   const mockedInfoLog = jest.spyOn(console, 'info').mockImplementation(text => text)
 
-  it('should log a the data for the given config', () => {
+  it('should log the data for the given config', () => {
     const data = [{
       bar: 'Bar1',
       baz: 'Baz1',
