@@ -8,7 +8,7 @@ You could - and probably should - just use `console.table` unless you appreciate
 
 ## How to use Space Log?
 
-Space Log exposes a function, `spaceLog`, which can be used as a named or default export. Both commonJS and ESM are supported.
+Space Log exposes a function, `spaceLog`, which can be imported as a named or default export. Both commonJS and ESM are supported.
 
 The `spaceLog` function expects two arguments; config and data.
 
@@ -17,8 +17,7 @@ The `spaceLog` function expects two arguments; config and data.
 - `config.headings`: An array of headings, i.e. the title of each column.
 
 - `data`: An array of objects containing the data to log.
-  - A hyphen will be rendered if the object does not contain the required key for a given column.
-  - A "theme" can be provided for a given key in a row. For example, to indicate that the most populous region of Japan is Kantō the `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text.
+  - A "theme" can be provided for a given key in a row by adding a property in the format `${key}Theme`. For example, to indicate that the most populous region of Japan is Kantō, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text.
 
 ```js
 import chalk from chalk
