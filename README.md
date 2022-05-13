@@ -1,14 +1,10 @@
 # 🛸 Space Log
 
-A simple utility for logging tabular data.
+Space Log is a simple function which logs tabular data, similar to that of `yarn outdated`.
+
+You could - and probably should - just use `console.table` unless you appreciate a borderless display of data.
 
 ![Regions of Japan](https://github.com/01taylop/space-log/blob/main/assets/results.png?raw=true)
-
-## What is Space Log?
-
-Space Log is a simple utility library which logs tabular data, similar to that of `yarn outdated`.
-
-You could, and probably should, just use `console.table` unless you appreciate a borderless display of data.
 
 ## How to use Space Log?
 
@@ -16,13 +12,13 @@ Space Log exposes a function, `spaceLog`, which can be used as a named or defaul
 
 The `spaceLog` function expects two arguments; config and data.
 
-- `config.columnKeys`: An array of keys for the data to display.
+- `config.columnKeys`: An array of keys, i.e. the `data[key]` of each column.
 
-- `config.headings`: An array of headings for each key, i.e. the title of each column.
+- `config.headings`: An array of headings, i.e. the title of each column.
 
 - `data`: An array of objects containing the data to log.
   - A hyphen will be rendered if the object does not contain the required key for a given column.
-  - A "theme" can be provided for a given key. In the example below, the population of Kantō will use [chalk](https://www.npmjs.com/package/chalk) to render green text because it is the most populous region of Japan.
+  - A "theme" can be provided for a given key in a row. For example, to indicate that the most populous region of Japan is Kantō the `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text.
 
 ```js
 import chalk from chalk
