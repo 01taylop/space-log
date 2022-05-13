@@ -1,7 +1,7 @@
 {
   "name": "space-log",
   "description": "A simple utility for logging tabular data to the terminal.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./lib/index.cjs",
   "exports": {
