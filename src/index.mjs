@@ -21,7 +21,7 @@ const spaceLog = (config, data) => {
 
     // Log Headings
     const headingLine = columnKeys.map((key, index) => {
-      const title = headings[index] || 'Unknown'
+      const title = headings[index] || defaultHeading
       const spacing = columnWidths[key] - title.length
       return `${chalk.underline(title)}${' '.repeat(spacing)}`
     }).join('')
