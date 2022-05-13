@@ -16,13 +16,13 @@ Space Log exposes a function, `spaceLog`, which can be used as a named or defaul
 
 The `spaceLog` function expects two arguments; config and data.
 
-- `config.columnKeys`: An array of key names of the data to display.
+- `config.columnKeys`: An array of keys for the data to display.
 
 - `config.headings`: An array of headings for each key, i.e. the title of each column.
 
 - `data`: An array of objects containing the data to log.
   - A hyphen will be rendered if the object does not contain the required key for a given column.
-  - A "theme" can be provided for a given key. In the example below, the population of Kantō will use [chalk](https://www.npmjs.com/package/chalk) to render green text because it is the largest region of Japan.
+  - A "theme" can be provided for a given key. In the example below, the population of Kantō will use [chalk](https://www.npmjs.com/package/chalk) to render green text because it is the most populous region of Japan.
 
 ```js
 import chalk from chalk
