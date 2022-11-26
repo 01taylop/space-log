@@ -2,22 +2,20 @@
 
 Space Log is a simple function which logs tabular data, similar to that of `yarn outdated`.
 
-You could - and probably should - just use `console.table` unless you appreciate a borderless display of data.
-
 ![Regions of Japan](https://github.com/01taylop/space-log/blob/main/assets/results.png?raw=true)
 
 ## How to use Space Log?
 
 Space Log exposes a function, `spaceLog`, which can be imported as a named or default export. Both commonJS and ESM are supported.
 
-The `spaceLog` function expects two arguments; config and data.
+The `spaceLog` function has two arguments;
 
 - `config.columnKeys`: An array of keys, i.e. the `data[key]` of each column.
 
-- `config.headings`: An array of headings, i.e. the title of each column.
+- `config.headings`: An optional array of headings, i.e. the title of each column. If no headings are provided, only the data will be output.
 
 - `data`: An array of objects containing the data to log.
-  - A "theme" can be provided for a given key in a row by adding a property in the format `${key}Theme`. For example, to indicate that the most populous region of Japan is Kantō, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text.
+  - A "theme" can be provided for a corresponding key by adding a property in the format `${key}Theme`. In the code below, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text to indicate that the most populous region of Japan is Kantō.
 
 ```js
 import chalk from chalk
