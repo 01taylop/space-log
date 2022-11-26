@@ -10,6 +10,46 @@ describe('spaceLog', () => {
   const mockedErrorLog = jest.spyOn(console, 'error').mockImplementation(text => text)
   const mockedInfoLog = jest.spyOn(console, 'info').mockImplementation(text => text)
 
+  const testData = [{
+    capital: 'Brasília',
+    country: 'Brazil',
+    flag: '🇧🇷'
+  }, {
+    capital: 'Tokyo',
+    country: 'Japan',
+    flag: '🇯🇵'
+  }, {
+    capital: 'Seoul',
+    country: 'South Korea',
+    flag: '🇰🇷'
+  }]
+
+  it('should log a spaced table with headings', () => {
+    spaceLog({
+      columnKeys: ['country', 'capital', 'flag'],
+      headings: ['Country', 'Capital', 'Flag'],
+    }, testData)
+
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, '')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, '_Country_     _Capital_  _Flag_')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'Brazil      Brasília 🇧🇷')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(4, 'Japan       Tokyo    🇯🇵')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(5, 'South Korea Seoul    🇰🇷')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(6, '')
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(6)
+  })
+
+  it('should log a spaced table without headings', () => {
+    spaceLog({
+      columnKeys: ['country', 'capital', 'flag'],
+    }, testData)
+
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, 'Brazil      Brasília 🇧🇷')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, 'Japan       Tokyo    🇯🇵')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'South Korea Seoul    🇰🇷')
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(3)
+  })
+
   it('should log the data for the given config', () => {
     const data = [{
       bar: 'Bar1',
