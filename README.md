@@ -8,17 +8,24 @@ Space Log is a simple function which logs tabular data, similar to that of `yarn
 
 Space Log exposes a function, `spaceLog`, which can be imported as a named or default export. Both commonJS and ESM are supported.
 
-The `spaceLog` function has two arguments;
+The `spaceLog` function has two required arguments; `config` and `data`.
 
-- `config.columnKeys`: An array of keys, i.e. the `data[key]` of each column.
+### Config (object)
 
-- `config.headings`: An optional array of headings, i.e. the title of each column. If no headings are provided, only the data will be output.
+- `columnKeys`: An array of keys, i.e. the `data[key]` of each column.
 
-- `data`: An array of objects containing the data to log.
-  - A "theme" can be provided for a corresponding key by adding a property in the format `${key}Theme`. In the code below, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text to indicate that the most populous region of Japan is Kantō.
+- `headings`: An optional array of headings, i.e. the title of each column. If no headings are provided, only the data will be output.
+
+### Data (array)
+
+An array of objects containing the data to log.
+
+A "theme" can be provided for a corresponding key by adding a property in the format `${key}Theme`. In the example below, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text to indicate that the most populous region of Japan is Kantō.
+
+## Example
 
 ```js
-import chalk from chalk
+import chalk from 'chalk'
 import { spaceLog } from 'space-log'
 
 spaceLog({
