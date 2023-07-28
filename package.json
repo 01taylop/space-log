@@ -1,6 +1,10 @@
 {
   "name": "space-log",
   "description": "A simple utility for logging tabular data to the terminal.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/01taylop/space-log"
+  },
   "version": "1.1.0",
   "type": "module",
   "main": "./lib/index.cjs",
@@ -26,20 +30,16 @@
     "chalk": "4.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.19.3",
-    "@babel/core": "7.20.2",
-    "@babel/plugin-proposal-optional-chaining": "7.18.9",
-    "@babel/plugin-transform-modules-commonjs": "7.19.6",
-    "@babel/preset-env": "7.20.2",
-    "babel-jest": "29.3.1",
-    "jest": "29.3.1",
-    "rimraf": "3.0.2"
+    "@babel/cli": "7.22.9",
+    "@babel/core": "7.22.9",
+    "@babel/plugin-proposal-optional-chaining": "7.21.0",
+    "@babel/plugin-transform-modules-commonjs": "7.22.5",
+    "@babel/preset-env": "7.22.9",
+    "babel-jest": "29.6.2",
+    "jest": "29.6.2",
+    "rimraf": "5.0.1"
   },
   "author": "Patrick Taylor <hello@patricktaylor.dev>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/01taylop/space-log"
-  },
   "keywords": [
     "console",
     "log",
