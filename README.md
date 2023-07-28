@@ -12,9 +12,9 @@ The `spaceLog` function has two required arguments; `config` and `data`.
 
 ### Config (object)
 
-- `columnKeys`: An array of keys, i.e. the `data[key]` of each column.
+- `columnKeys`: An array of keys representing the `data[key]` of each column.
 
-- `headings`: An optional array of headings, i.e. the title of each column. If no headings are provided, only the data will be output.
+- `headings`: An optional array of headings to use as the title of each column. If no headings are provided, only the data will be included in the output.
 
 ### Data (array)
 
