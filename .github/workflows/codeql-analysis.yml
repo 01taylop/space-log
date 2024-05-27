@@ -1,4 +1,4 @@
-name: CodeQL
+name: CodeQL Analysis
 
 on:
   push:
@@ -6,12 +6,13 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '34 21 * * 1'
+    - cron: '0 9 * * 1'
 
 jobs:
-  analyze:
-    name: Analyze
+  analyse:
+    name: Analyse
     runs-on: ubuntu-latest
+
     permissions:
       actions: read
       contents: read

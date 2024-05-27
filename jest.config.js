@@ -1,7 +1,7 @@
 export default {
   clearMocks: true,
   collectCoverageFrom: [
-    'src/**/*.mjs',
+    'src/**/*.js',
   ],
   coverageDirectory: 'coverage',
   coverageThreshold: {
@@ -12,10 +12,5 @@ export default {
       statements: 100,
     },
   },
-  moduleFileExtensions: ['js', 'mjs'],
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.mjs$',
-  transform: {
-    '^.+\\.mjs$': 'babel-jest',
-  },
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  testMatch: ['**/*.spec.js'],
 }
