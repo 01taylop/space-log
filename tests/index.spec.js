@@ -1,4 +1,4 @@
-import spaceLog from '../src/index.mjs'
+import spaceLog from '../src/index.js'
 
 jest.mock('chalk', () => ({
   underline: jest.fn().mockImplementation(text => `_${text}_`),
@@ -24,7 +24,18 @@ describe('spaceLog', () => {
     flag: '🇰🇷'
   }]
 
-  it('should log a spaced table with headings', () => {
+  it('logs a table without headings', () => {
+    spaceLog({
+      columnKeys: ['country', 'capital', 'flag'],
+    }, testData)
+
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(3)
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, 'Brazil      Brasília 🇧🇷')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, 'Japan       Tokyo    🇯🇵')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'South Korea Seoul    🇰🇷')
+  })
+
+  it('logs a table with headings', () => {
     spaceLog({
       columnKeys: ['country', 'capital', 'flag'],
       headings: ['Country', 'Capital', 'Flag'],
@@ -39,50 +50,59 @@ describe('spaceLog', () => {
     expect(mockedConsoleLog).toHaveBeenNthCalledWith(6, '')
   })
 
-  it('should log a spaced table without headings', () => {
+  it('logs a table with a missing heading', () => {
     spaceLog({
       columnKeys: ['country', 'capital', 'flag'],
-    }, testData)
-
-    expect(mockedConsoleLog).toHaveBeenCalledTimes(3)
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, 'Brazil      Brasília 🇧🇷')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, 'Japan       Tokyo    🇯🇵')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'South Korea Seoul    🇰🇷')
-  })
-
-  it('should log the data for the given config', () => {
-    spaceLog({
-      columnKeys: ['foo', 'bar', 'baz'],
-      headings: ['Foo', 'Bar'],
+      headings: ['Country', null, 'Flag'],
     }, [{
-      bar: 'Bar1',
-      baz: 'Baz1',
-      foo: 'Foo1',
-      fooTheme: console.info,
-    }, {
-      baz: 'Baz2',
-      foo: 'Foo2',
-    }, {
-      bar: 'Bar456789',
-      foo: 'Foo456',
+      capital: 'Madrid',
+      country: 'Spain',
+      flag: '🇪🇸'
     }])
 
-    expect(mockedConsoleLog).toHaveBeenCalledTimes(6)
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(4)
     expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, '')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, '_Foo_    _Bar_       _Unknown_')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'Foo1   Bar1      Baz1')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(4, 'Foo2   -         Baz2')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(5, 'Foo456 Bar456789 -')
-    expect(mockedConsoleLog).toHaveBeenNthCalledWith(6, '')
-
-    expect(mockedInfoLog).toHaveBeenCalledTimes(1)
-    expect(mockedInfoLog).toHaveBeenNthCalledWith(1, 'Foo1')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, '_Country_ _Unknown_ _Flag_')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'Spain   Madrid  🇪🇸')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(4, '')
   })
 
-  it('should log an error if something goes wrong', () => {
+  it('logs a table with missing data', () => {
     spaceLog({
-      columnKeys: ['foo', 'bar', 'baz'],
-      headings: ['Foo', 'Bar'],
+      columnKeys: ['country', 'capital', 'flag'],
+      headings: ['Country', 'Capital', 'Flag'],
+    }, [{
+      country: 'South Africa',
+      flag: '🇿🇦'
+    }])
+
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(4)
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, '')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, '_Country_      _Capital_ _Flag_')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'South Africa -       🇿🇦')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(4, '')
+  })
+
+  it('logs a table with a theme modifier', () => {
+    spaceLog({
+      columnKeys: ['country', 'capital', 'flag'],
+    }, [{
+      capital: 'London',
+      country: 'United Kingdom',
+      countryTheme: console.info,
+      flag: '🇬🇧'
+    }])
+
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(1)
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, 'United Kingdom London 🇬🇧')
+
+    expect(mockedInfoLog).toHaveBeenCalledTimes(1)
+    expect(mockedInfoLog).toHaveBeenNthCalledWith(1, 'United Kingdom')
+  })
+
+  it('logs an error if something goes wrong, but does not throw', () => {
+    spaceLog({
+      columnKeys: ['country', 'capital', 'flag'],
     })
 
     expect(mockedErrorLog).toHaveBeenCalledTimes(1)

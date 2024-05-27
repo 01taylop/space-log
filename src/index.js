@@ -13,7 +13,7 @@ const spaceLog = (config, data) => {
       console.log('')
     }
 
-    // Calculate Column Width
+    // Calculate Column Widths
     const columnWidths = {}
 
     columnKeys.forEach((key, index) => {
@@ -36,7 +36,7 @@ const spaceLog = (config, data) => {
     // Log Data
     data.forEach(item => {
       let line = ''
-      columnKeys.map(key => {
+      columnKeys.forEach(key => {
         const text = item[key] || '-'
         const spacing = columnWidths[key] - text.length
         const theme = item[`${key}Theme`] || null
