@@ -1,43 +1,39 @@
 {
   "name": "space-log",
-  "description": "A simple utility for logging tabular data to the terminal.",
+  "description": "A utility for logging tabular data to the terminal.",
   "repository": {
     "type": "git",
     "url": "https://github.com/01taylop/space-log"
   },
   "version": "1.1.0",
   "type": "module",
-  "main": "./lib/index.cjs",
+  "main": "./lib/index.js",
   "exports": {
     ".": {
-      "require": "./lib/index.cjs",
-      "import": "./lib/index.mjs"
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
     }
   },
   "files": [
-    "lib",
-    "README.md"
+    "lib"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
-    "build": "rimraf lib && babel src -d lib --out-file-extension .cjs && cp src/index.mjs lib/",
-    "publishLib": "yarn test --coverage && yarn build && npm publish",
-    "test": "jest"
+    "build:cjs": "babel src -d lib --env-name cjs --out-file-extension .cjs",
+    "build:esm": "babel src -d lib --env-name esm --out-file-extension .js",
+    "build": "rimraf lib && yarn run build:cjs && yarn run build:esm",
+    "prepublishOnly": "yarn test --coverage && yarn build && yarn test:bundles",
+    "test": "jest",
+    "test:bundles": "jest --config ./jest/cjs.config.js && jest --config ./jest/esm.config.js"
   },
   "dependencies": {
     "chalk": "4.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.22.9",
-    "@babel/core": "7.22.9",
-    "@babel/plugin-proposal-optional-chaining": "7.21.0",
-    "@babel/plugin-transform-modules-commonjs": "7.22.5",
-    "@babel/preset-env": "7.22.9",
-    "babel-jest": "29.6.2",
-    "jest": "29.6.2",
-    "rimraf": "5.0.1"
+    "@babel/cli": "7.24.6",
+    "@babel/core": "7.24.6",
+    "@babel/preset-env": "7.24.6",
+    "jest": "29.7.0",
+    "rimraf": "5.0.7"
   },
   "author": "Patrick Taylor <hello@patricktaylor.dev>",
   "keywords": [
@@ -47,6 +43,5 @@
     "spaced-log",
     "tabular-log",
     "table-log"
-  ],
-  "license": "ISC"
+  ]
 }
