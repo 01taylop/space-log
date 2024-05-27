@@ -71,7 +71,7 @@ For ES Modules:
 import { spaceLog } from 'space-log'
 ```
 
-The `spaceLog` function can also be imported as a default export.
+The `spaceLog` function is exported both as a default and named export, so you can import it either way.
 
 ### Arguments
 
@@ -87,4 +87,4 @@ The `spaceLog` function has two required arguments; `config` and `data`.
 
 An array of objects containing the data to log.
 
-A "theme" can be provided for a corresponding key by adding a property in the format `${key}Theme`. In the example below, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text to indicate that the most populous region of Japan is Kantō.
+A "theme" can be provided for a corresponding key by adding a property in the format `${key}Theme`. In the example above, `populationTheme` uses [chalk](https://www.npmjs.com/package/chalk) to render green text to indicate that the most populous region of Japan is Kantō.
