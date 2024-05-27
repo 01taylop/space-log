@@ -71,7 +71,7 @@ For ES Modules:
 import { spaceLog } from 'space-log'
 ```
 
-Space Log can also be imported as a default export.
+The `spaceLog` function can also be imported as a default export.
 
 ### Arguments
 
