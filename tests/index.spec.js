@@ -108,4 +108,5 @@ describe('spaceLog', () => {
     expect(mockedErrorLog).toHaveBeenCalledTimes(1)
     expect(mockedErrorLog).toHaveBeenNthCalledWith(1, 'Cannot read properties of undefined (reading \'map\')')
   })
+
 })
