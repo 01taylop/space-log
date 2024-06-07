@@ -1,5 +1,4 @@
 ignores: [
-  "chalk",
   "rimraf"
 ]
 skip-missing: true
