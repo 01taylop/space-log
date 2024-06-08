@@ -3,7 +3,7 @@ import baseConfig from '../jest.config.js'
 export default {
   ...baseConfig,
   moduleNameMapper: {
-    '/src/index$': '<rootDir>/lib/index.cjs',
+    '<rootDir>/src/(.*)$': '<rootDir>/lib/$1.cjs',
   },
   rootDir: '../',
 }
