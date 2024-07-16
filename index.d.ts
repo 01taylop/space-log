@@ -5,11 +5,10 @@ interface SpaceLogConfig {
 }
 
 interface SpaceLogDataItem {
-  [key: string]: string | undefined | ((text: string) => string)
+  [key: string]: any
 }
 
-function spaceLog(config: SpaceLogConfig, data: SpaceLogDataItem[]): void
+declare function spaceLog(config: SpaceLogConfig, data: Array<SpaceLogDataItem>): void
 
 export { spaceLog }
-
 export default spaceLog
