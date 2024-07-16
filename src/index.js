@@ -4,7 +4,7 @@ const defaultHeading = 'Unknown'
 
 const spaceLog = (config, data) => {
   try {
-    const { columnKeys, headings } = config
+    const { columnKeys, headings, spaceSize = 1 } = config
 
     const hasHeadings = !!(headings && headings.length)
 
@@ -20,7 +20,7 @@ const spaceLog = (config, data) => {
       const headingLength = hasHeadings ? (headings[index]?.length || defaultHeading.length) : 0
       const dataLengths = data.map(item => item[key]?.length || 0)
 
-      columnWidths[key] = Math.max(headingLength, ...dataLengths) + 1
+      columnWidths[key] = Math.max(headingLength, ...dataLengths) + spaceSize
     })
 
     // Log Headings

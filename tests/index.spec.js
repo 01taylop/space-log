@@ -50,6 +50,22 @@ describe('spaceLog', () => {
     expect(mockedConsoleLog).toHaveBeenNthCalledWith(6, '')
   })
 
+  it('logs a table with headings and extra space', () => {
+    spaceLog({
+      columnKeys: ['country', 'capital', 'flag'],
+      headings: ['Country', 'Capital', 'Flag'],
+      spaceSize: 2,
+    }, testData)
+
+    expect(mockedConsoleLog).toHaveBeenCalledTimes(6)
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(1, '')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(2, '_Country_      _Capital_   _Flag_')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'Brazil       Brasília  🇧🇷')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(4, 'Japan        Tokyo     🇯🇵')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(5, 'South Korea  Seoul     🇰🇷')
+    expect(mockedConsoleLog).toHaveBeenNthCalledWith(6, '')
+  })
+
   it('logs a table with a missing heading', () => {
     spaceLog({
       columnKeys: ['country', 'capital', 'flag'],
