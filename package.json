@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/01taylop/space-log.git"
   },
-  "version": "1.2.0-beta.2",
+  "version": "1.2.0",
   "type": "module",
   "main": "./lib/index.js",
   "types": "./index.d.ts",

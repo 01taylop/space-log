@@ -83,7 +83,7 @@ The `spaceLog` function has two required arguments; `config` and `data`.
 
 - `headings`: An optional array of headings to use as the title of each column. If no headings are provided, only the data will be included in the output.
 
-- `spaceSize`: Define the space between each column. Default: 1.
+- `spaceSize`: Specifies the spacing between columns. Default value is `1`.
 
 #### Data (array)
 
