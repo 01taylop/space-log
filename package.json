@@ -5,9 +5,10 @@
     "type": "git",
     "url": "git+https://github.com/01taylop/space-log.git"
   },
-  "version": "1.1.1",
+  "version": "1.2.0",
   "type": "module",
   "main": "./lib/index.js",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/index.js",
@@ -15,7 +16,8 @@
     }
   },
   "files": [
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
   "scripts": {
     "build:cjs": "babel src -d lib --env-name cjs --out-file-extension .cjs",
