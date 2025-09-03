@@ -1,11 +1,11 @@
 {
   "name": "space-log",
   "description": "A utility for logging tabular data to the terminal.",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/01taylop/space-log.git"
   },
-  "version": "1.2.0",
   "type": "module",
   "engines": {
     "node": ">=18.18.0"
@@ -23,15 +23,15 @@
     "index.d.ts"
   ],
   "scripts": {
+    "build": "rimraf lib && yarn run build:cjs && yarn run build:esm",
     "build:cjs": "babel src -d lib --env-name cjs --out-file-extension .cjs",
     "build:esm": "babel src -d lib --env-name esm --out-file-extension .js",
-    "build": "rimraf lib && yarn run build:cjs && yarn run build:esm",
     "prepublishOnly": "yarn test --coverage && yarn build && yarn test:bundles",
     "test": "jest",
     "test:bundles": "jest --config ./jest/cjs.config.js && jest --config ./jest/esm.config.js"
   },
   "dependencies": {
-    "chalk": "4.1.2"
+    "chalk": "^4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "7.24.6",
@@ -48,7 +48,8 @@
     "space",
     "spaced",
     "table",
-    "tabular"
+    "tabular",
+    "terminal"
   ],
   "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
 }
