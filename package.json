@@ -26,6 +26,7 @@
     "build": "rimraf lib && yarn run build:cjs && yarn run build:esm",
     "build:cjs": "babel src -d lib --env-name cjs --out-file-extension .cjs",
     "build:esm": "babel src -d lib --env-name esm --out-file-extension .js",
+    "example": "node ./scripts/example",
     "prepublishOnly": "yarn test --coverage && yarn build && yarn test:bundles",
     "test": "jest",
     "test:bundles": "jest --config ./jest/cjs.config.js && jest --config ./jest/esm.config.js"
