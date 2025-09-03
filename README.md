@@ -49,29 +49,25 @@ spaceLog({
 
 ### Installation
 
-First, install the package as a dependency:
+Install the package as a dependency:
 
 ```bash
-# Using yarn
-yarn add space-log
-
 # Using npm
 npm install space-log
+
+# Using yarn
+yarn add space-log
 ```
 
 ### Importing
 
 You can import `spaceLog` using either CommonJS or ES Modules:
 
-For CommonJS:
-
 ```js
+// Using CommonJS
 const { spaceLog } = require('space-log')
-```
 
-For ES Modules:
-
-```js
+// Using ES Modules
 import { spaceLog } from 'space-log'
 ```
 
@@ -83,11 +79,11 @@ The `spaceLog` function has two required arguments; `config` and `data`.
 
 #### Config (object)
 
-- `columnKeys`: An array of keys representing the `data[key]` of each column.
-
-- `headings`: An optional array of headings to use as the title of each column. If no headings are provided, only the data will be included in the output.
-
-- `spaceSize`: Specifies the spacing between columns. Default value is `1`.
+| Property     | Type   | Required | Default | Description                                                |
+|--------------|--------|----------|---------|------------------------------------------------------------|
+| `columnKeys` | array  | ✅       | -       | Array of keys representing the `data[key]` of each column. |
+| `headings`   | array  | -        | -       | Column headings. If omitted, only data is shown.           |
+| `spaceSize`  | number | -        | 1       | Amount of whitespace around column content.                |
 
 #### Data (array)
 
