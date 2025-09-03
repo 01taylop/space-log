@@ -18,7 +18,9 @@ A utility for displaying data as formatted tables in the console. It automatical
 
 ## Motivation
 
-When running `yarn outdated`, any outdated dependencies are displayed in a well-presented, easy-to-read table in the terminal. Space Log replicates this functionality simply and efficiently, abstracting away the complex logic involved in calculating column widths based on the longest string in each column.
+Building CLI tools and development utilities often requires displaying structured data in the console. However, creating well-formatted tables with proper alignment and spacing is surprisingly complex.
+
+Space Log solves this by providing a simple API that automatically handles all the formatting complexity, letting you focus on your data rather than console layout. Whether you're building deployment dashboards, test reporters, or data analysis tools, you get professional-looking table output with minimal code.
 
 ## Example
 
