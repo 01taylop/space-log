@@ -3,7 +3,9 @@
 [![CodeQL Analysis](https://github.com/01taylop/space-log/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/01taylop/space-log/actions/workflows/codeql-analysis.yml)
 [![Test](https://github.com/01taylop/space-log/actions/workflows/test.yml/badge.svg)](https://github.com/01taylop/space-log/actions/workflows/test.yml)
 
-Space Log is a utility which logs structured data to the console in a tabular format. It dynamically adjusts column widths based on the longest string in each column and supports optional underlined headings, with the ability to apply custom styling to the text.
+![Node Versions Supported](https://img.shields.io/static/v1?label=node&message=>=18.18.0&color=blue)
+
+A utility for displaying data as formatted tables in the console. It automatically adjusts column widths, supports optional headings, and allows custom styling for individual data cells, making it ideal for CLI tools, build reports, and development dashboards.
 
 - [Motivation](#motivation)
 - [Example](#example)
