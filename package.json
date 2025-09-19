@@ -1,6 +1,6 @@
 {
   "name": "space-log",
-  "description": "A utility for logging tabular data to the terminal.",
+  "description": "A utility for displaying data as formatted tables in the console.",
   "version": "1.2.0",
   "repository": {
     "type": "git",
