@@ -19,15 +19,14 @@
     }
   },
   "files": [
-    "lib",
-    "index.d.ts"
+    "lib"
   ],
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "example": "tsx ./scripts/example",
-    "prepublishOnly": "yarn test --coverage && yarn build && yarn test:bundles",
-    "test": "jest",
-    "test:bundles": "jest --config ./jest/cjs.config.ts && jest --config ./jest/esm.config.ts"
+    "prepublishOnly": "yarn test --coverage && yarn build && yarn test:integration",
+    "test": "jest src/",
+    "test:integration": "jest tests/"
   },
   "dependencies": {
     "chalk": "^4.1.2"
