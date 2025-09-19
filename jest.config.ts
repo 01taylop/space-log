@@ -15,7 +15,7 @@ const config: Config = {
     },
   },
   transform: {
-    '^.+\\.(js|ts)$': 'ts-jest',
+    '^.+\\.ts$': 'ts-jest',
   },
 }
 

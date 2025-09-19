@@ -8,10 +8,7 @@ interface SpaceLogDataItem {
   [key: string]: string | number | boolean | null | undefined | ((text: string) => string)
 }
 
-declare function spaceLog(config: SpaceLogConfig, data: Array<SpaceLogDataItem>): void
-
-export {
-  spaceLog,
+export type {
+  SpaceLogConfig,
+  SpaceLogDataItem,
 }
-
-export default spaceLog

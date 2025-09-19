@@ -1,8 +1,10 @@
 import chalk from 'chalk'
 
-const defaultHeading = 'Unknown'
+import type { SpaceLogConfig, SpaceLogDataItem } from './types'
 
-const spaceLog = (config, data) => {
+const DEFAULT_HEADING = 'Unknown'
+
+const spaceLog = (config: SpaceLogConfig, data: Array<SpaceLogDataItem>): void => {
   try {
     const { columnKeys, headings, spaceSize = 1 } = config
 
@@ -14,11 +16,13 @@ const spaceLog = (config, data) => {
     }
 
     // Calculate Column Widths
-    const columnWidths = {}
+    const columnWidths: Record<string, number> = {}
 
     columnKeys.forEach((key, index) => {
-      const headingLength = hasHeadings ? (headings[index]?.length || defaultHeading.length) : 0
-      const dataLengths = data.map(item => item[key]?.length || 0)
+      const headingLength = hasHeadings
+        ? (headings[index]?.length || DEFAULT_HEADING.length)
+        : 0
+      const dataLengths = data.map(item => item[key]?.toString().length || 0)
 
       columnWidths[key] = Math.max(headingLength, ...dataLengths) + spaceSize
     })
@@ -26,7 +30,7 @@ const spaceLog = (config, data) => {
     // Log Headings
     if (hasHeadings) {
       const headingLine = columnKeys.map((key, index) => {
-        const title = headings[index] || defaultHeading
+        const title = headings[index] || DEFAULT_HEADING
         const spacing = columnWidths[key] - title.length
         return `${chalk.underline(title)}${' '.repeat(spacing)}`
       }).join('')
@@ -37,10 +41,10 @@ const spaceLog = (config, data) => {
     data.forEach(item => {
       let line = ''
       columnKeys.forEach(key => {
-        const text = item[key] || '-'
+        const text = item[key]?.toString() || '-'
         const spacing = columnWidths[key] - text.length
         const theme = item[`${key}Theme`] || null
-        const styledText = theme ? theme(text) : text
+        const styledText = theme && typeof theme === 'function' ? theme(text) : text
         line = `${line}${styledText}${' '.repeat(spacing)}`
       })
       console.log(line.trim())
@@ -50,8 +54,8 @@ const spaceLog = (config, data) => {
     if (hasHeadings) {
       console.log('')
     }
-  } catch (error) {
-    console.error(error.message)
+  } catch (error: unknown) {
+    console.error(error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
