@@ -26,7 +26,7 @@
     "build": "rimraf lib && yarn run build:cjs && yarn run build:esm",
     "build:cjs": "babel src -d lib --env-name cjs --out-file-extension .cjs",
     "build:esm": "babel src -d lib --env-name esm --out-file-extension .js",
-    "example": "node ./scripts/example",
+    "example": "tsx ./scripts/example",
     "prepublishOnly": "yarn test --coverage && yarn build && yarn test:bundles",
     "test": "jest",
     "test:bundles": "jest --config ./jest/cjs.config.ts && jest --config ./jest/esm.config.ts"
@@ -45,6 +45,7 @@
     "semver": "7.7.2",
     "ts-jest": "29.4.1",
     "ts-node": "10.9.2",
+    "tsx": "4.20.5",
     "typescript": "5.9.2"
   },
   "author": "Patrick Taylor <hello@patricktaylor.dev>",
