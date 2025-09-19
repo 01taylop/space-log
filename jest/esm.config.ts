@@ -9,6 +9,9 @@ const config: Config = {
   transformIgnorePatterns: [
     '<rootDir>/lib/(.*)$'
   ],
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
 }
 
 export default config
