@@ -3,8 +3,13 @@ import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import { defineConfig } from 'rollup'
 
+import pkg from './package.json' assert { type: 'json' }
+
 const commonOptions = {
-  external: ['chalk'],
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {}),
+  ],
   input: 'src/index.ts',
 }
 
@@ -15,7 +20,7 @@ const commonTypeScriptOptions = {
 export default defineConfig([{
   ...commonOptions,
   output: {
-    exports: 'named',
+    exports: 'auto',
     file: 'lib/index.cjs',
     format: 'cjs',
   },
@@ -27,7 +32,7 @@ export default defineConfig([{
 }, {
   ...commonOptions,
   output: {
-    exports: 'named',
+    exports: 'auto',
     file: 'lib/index.js',
     format: 'esm',
   },
