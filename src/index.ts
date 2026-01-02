@@ -5,6 +5,10 @@ import type { SpaceLogConfig, SpaceLogData } from './types'
 const spaceLog = (config: SpaceLogConfig, data: SpaceLogData): void => {
   const { columnKeys, headings, spaceSize = 1 } = config
 
+  if (!columnKeys.length || !data.length) {
+    return
+  }
+
   const hasHeadings = headings !== undefined && headings.length > 0
 
   // Intentional spacing
@@ -21,7 +25,7 @@ const spaceLog = (config: SpaceLogConfig, data: SpaceLogData): void => {
       : 0
     const dataLengths = data.map(item => item[key]?.toString().length || 0)
 
-    columnWidths[key] = Math.max(headingLength, ...dataLengths) + spaceSize
+    columnWidths[key] = Math.max(headingLength, ...dataLengths) + Math.max(spaceSize, 1)
   })
 
   // Log headings

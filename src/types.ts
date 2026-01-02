@@ -13,5 +13,4 @@ type SpaceLogData = readonly SpaceLogDataItem[]
 export type {
   SpaceLogConfig,
   SpaceLogData,
-  SpaceLogDataItem,
 }
