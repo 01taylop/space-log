@@ -70,8 +70,6 @@ const { spaceLog } = require('space-log')
 import { spaceLog } from 'space-log'
 ```
 
-The `spaceLog` function is exported both as a default and named export, so you can import it either way.
-
 ### Arguments
 
 The `spaceLog` function has two required arguments; `config` and `data`.

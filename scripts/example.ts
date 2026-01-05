@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-import { spaceLog } from '../src/index.js'
+import { spaceLog } from '../src'
 
 spaceLog({
   columnKeys: ['name', 'population', 'area'],

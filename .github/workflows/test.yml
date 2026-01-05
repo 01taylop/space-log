@@ -33,13 +33,16 @@ jobs:
     - name: Install dependencies
       run: yarn install --immutable
 
+    - name: Type check
+      run: yarn tsc --noEmit
+
     - name: Unit tests
       run: yarn test --coverage
 
     - name: Integration tests
       run: |
         yarn build
-        yarn test:bundles
+        yarn test:integration
 
     - name: Check code quality
       run: yarn knip
