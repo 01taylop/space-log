@@ -2,7 +2,7 @@
 "space-log": major
 ---
 
-Removed default export - Use named exports instead:
+Removed default export in favour of named exports only
 
 ```diff
 - import spaceLog from 'space-log'
