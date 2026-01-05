@@ -27,7 +27,7 @@
     "prepublishOnly": "yarn test --coverage && yarn build && yarn test:integration",
     "release": "changeset publish",
     "test": "jest src/",
-    "test:integration": "jest tests/"
+    "test:integration": "yarn node --experimental-vm-modules $(yarn bin jest) tests/"
   },
   "dependencies": {
     "chalk": "^4.1.2"
