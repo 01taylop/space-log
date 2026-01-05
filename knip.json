@@ -1,6 +1,7 @@
 {
   "ignoreBinaries": [],
   "ignoreDependencies": [
+    "@jest/globals",
     "ts-node"
   ]
 }
