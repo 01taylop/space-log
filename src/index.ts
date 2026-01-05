@@ -60,5 +60,3 @@ const spaceLog = (config: SpaceLogConfig, data: SpaceLogData): void => {
 export {
   spaceLog,
 }
-
-export default spaceLog
