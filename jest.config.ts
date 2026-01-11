@@ -17,12 +17,16 @@ const config: Config = {
   extensionsToTreatAsEsm: ['.ts'],
   testEnvironment: 'node',
   transform: {
-    'integration-esm\\.spec\\.ts$': ['ts-jest', { useESM: true }],
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': ['ts-jest', {
+      tsconfig: {
+        rootDir: '.',
+      },
+      useESM: true,
+    }],
   },
   transformIgnorePatterns: [
-    '/node_modules/',
     '/lib/',
+    '/node_modules/',
   ],
 }
 
