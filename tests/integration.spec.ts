@@ -1,12 +1,15 @@
-import { createRequire } from 'node:module'
-
 import { jest } from '@jest/globals'
 import chalk from 'chalk'
 
-const esmRequire = createRequire(import.meta.url)
-const { spaceLog } = esmRequire('../lib/index.cjs')
+import { spaceLog as spaceLogESM } from '../lib/index.js'
 
-describe('Integration tests - CJS', () => {
+// @ts-ignore - CJS build doesn't have type definitions
+const { spaceLog: spaceLogCJS } = await import('../lib/index.cjs')
+
+describe.each([
+  ['ESM', spaceLogESM],
+  ['CJS', spaceLogCJS],
+])('Integration tests - %s', (_format, spaceLog) => {
 
   const mockedConsoleLog = jest.spyOn(console, 'log').mockImplementation(text => text)
 
