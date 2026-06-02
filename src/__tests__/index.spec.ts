@@ -2,6 +2,8 @@ import chalk from 'chalk'
 
 import { spaceLog } from '..'
 
+import { TEST_DATA } from './fixtures'
+
 jest.mock('chalk', () => ({
   blue: jest.fn().mockImplementation(text => text),
   green: jest.fn().mockImplementation(text => text),
@@ -11,26 +13,6 @@ jest.mock('chalk', () => ({
 describe('spaceLog', () => {
 
   const mockedConsoleLog = jest.spyOn(console, 'log').mockImplementation(text => text)
-
-  const TEST_DATA = [{
-    capital: 'Brasília',
-    country: 'Brazil',
-    flag: '🇧🇷',
-    isIslandNation: false,
-    population: 213,
-  }, {
-    capital: 'Tokyo',
-    country: 'Japan',
-    flag: '🇯🇵',
-    isIslandNation: true,
-    population: 124,
-  }, {
-    capital: 'Seoul',
-    country: 'South Korea',
-    flag: '🇰🇷',
-    isIslandNation: false,
-    population: 51,
-  }]
 
   it('does not log anything when there are no columnKeys', () => {
     spaceLog({
@@ -93,7 +75,7 @@ describe('spaceLog', () => {
       capital: 'Madrid',
       country: 'Spain',
       population: 3.5,
-      flag: '🇪🇸'
+      flag: '🇪🇸',
     }])
 
     expect(mockedConsoleLog).toHaveBeenCalledTimes(4)
@@ -108,7 +90,7 @@ describe('spaceLog', () => {
       columnKeys: ['country', 'capital', 'flag'],
     }, [...TEST_DATA, {
       country: 'South Africa',
-      flag: '🇿🇦'
+      flag: '🇿🇦',
     }])
 
     expect(mockedConsoleLog).toHaveBeenCalledTimes(4)
@@ -155,7 +137,7 @@ describe('spaceLog', () => {
         capital: 'London',
         country: 'United Kingdom',
         countryTheme: chalk.blue,
-        flag: '🇬🇧'
+        flag: '🇬🇧',
       }])
 
       expect(mockedConsoleLog).toHaveBeenCalledTimes(1)
@@ -172,7 +154,7 @@ describe('spaceLog', () => {
         capitalTheme: chalk.green,
         country: 'United Kingdom',
         countryTheme: chalk.blue,
-        flag: '🇬🇧'
+        flag: '🇬🇧',
       }])
 
       expect(mockedConsoleLog).toHaveBeenCalledTimes(1)
@@ -190,7 +172,7 @@ describe('spaceLog', () => {
         capital: 'London',
         country: 'United Kingdom',
         countryTheme: 'not a function',
-        flag: '🇬🇧'
+        flag: '🇬🇧',
       }])
 
       expect(mockedConsoleLog).toHaveBeenCalledTimes(1)
