@@ -78,7 +78,7 @@ The `spaceLog` function has two required arguments; `config` and `data`.
 
 | Property     | Type   | Required | Default | Description                                                |
 |--------------|--------|----------|---------|------------------------------------------------------------|
-| `columnKeys` | array  | ✅       | -       | Array of keys representing the `data[key]` of each column. |
+| `columnKeys` | array  | ✅       | -       | Array of keys representing the `data[key]` of each column. In TypeScript, these are inferred from the data type, so passing an unrecognised key is a compile-time error. |
 | `headings`   | array  | -        | -       | Column headings. If omitted, only data is shown.           |
 | `spaceSize`  | number | -        | 1       | Amount of whitespace around column content.                |
 

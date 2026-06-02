@@ -1,8 +1,8 @@
 import chalk from 'chalk'
 
-import type { SpaceLogConfig, SpaceLogData } from './types'
+import type { SpaceLogConfig, SpaceLogData, SpaceLogDataItem } from './types'
 
-const spaceLog = (config: SpaceLogConfig, data: SpaceLogData): void => {
+const spaceLog = <T extends SpaceLogDataItem>(config: SpaceLogConfig<T>, data: SpaceLogData<T>): void => {
   const { columnKeys, headings, spaceSize = 1 } = config
 
   if (!columnKeys.length || !data.length) {
