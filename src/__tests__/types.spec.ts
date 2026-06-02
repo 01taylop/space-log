@@ -3,7 +3,7 @@ import { spaceLog } from '..'
 import { TEST_DATA } from './fixtures'
 
 it('constrains columnKeys to keys present in the data', () => {
-  jest.spyOn(console, 'log').mockImplementation(() => true)
+  jest.spyOn(console, 'log').mockImplementation(() => {})
 
   spaceLog({ columnKeys: ['country', 'capital', 'flag', 'isIslandNation', 'population'] }, TEST_DATA)
   spaceLog({ columnKeys: ['country', 'capital'] }, TEST_DATA)
