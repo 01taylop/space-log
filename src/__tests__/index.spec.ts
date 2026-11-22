@@ -114,7 +114,7 @@ describe('spaceLog', () => {
       expect(mockedConsoleLog).toHaveBeenNthCalledWith(3, 'South Korea  Seoul     🇰🇷')
     })
 
-    test.each([0, -2])('logs a table with a spaceSize of 1 when spaceSize is less than 1 (%s)', spaceSize => {
+    it.each([0, -2])('logs a table with a spaceSize of 1 when spaceSize is less than 1 (%s)', spaceSize => {
       spaceLog({
         columnKeys: ['country', 'capital', 'flag'],
         spaceSize,
