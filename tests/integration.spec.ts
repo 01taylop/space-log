@@ -3,7 +3,6 @@ import chalk from 'chalk'
 
 import { spaceLog as spaceLogESM } from '../lib/index.js'
 
-// @ts-ignore - CJS build doesn't have type definitions
 const { spaceLog: spaceLogCJS } = await import('../lib/index.cjs')
 
 describe.each([
