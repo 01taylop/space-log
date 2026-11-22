@@ -27,6 +27,7 @@
   "files": [
     "lib"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "example": "tsx ./scripts/example",
