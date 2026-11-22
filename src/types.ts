@@ -1,15 +1,18 @@
-interface SpaceLogConfig<T extends SpaceLogDataItem = SpaceLogDataItem> {
+interface SpaceLogConfig<T extends SpaceLogDataItem<T> = SpaceLogDataItem> {
   columnKeys: readonly (keyof T & string)[]
   headings?: readonly string[]
   spaceSize?: number
 }
 
-type SpaceLogDataItem = Record<string, string | number | boolean | null | undefined | ((text: string) => string)>
+type SpaceLogValue = string | number | boolean | null | undefined | ((text: string) => string)
 
-type SpaceLogData<T extends SpaceLogDataItem = SpaceLogDataItem> = readonly T[]
+type SpaceLogDataItem<T = Record<string, SpaceLogValue>> = { [K in keyof T]: SpaceLogValue }
+
+type SpaceLogData<T extends SpaceLogDataItem<T> = SpaceLogDataItem> = readonly T[]
 
 export type {
   SpaceLogConfig,
   SpaceLogData,
   SpaceLogDataItem,
+  SpaceLogValue,
 }
