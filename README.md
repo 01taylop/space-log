@@ -23,7 +23,7 @@ Space Log solves this by providing a simple API that automatically handles all t
 
 ## Example
 
-![Regions of Japan](https://github.com/01taylop/space-log/blob/main/assets/results.png?raw=true)
+![Regions of Japan](https://github.com/01taylop/space-log/blob/main/assets/example.png?raw=true)
 
 ```js
 import chalk from 'chalk'
