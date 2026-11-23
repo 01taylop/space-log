@@ -1,5 +1,13 @@
 # space-log
 
+## 2.1.1
+
+### Patch Changes
+
+- cfbd564: Fixed TypeScript types for CommonJS consumers and for ESM consumers using `node16` module resolution
+- cfbd564: Fixed `spaceLog` rejecting data typed with an `interface`
+- cfbd564: Marked the package as side-effect free so bundlers can tree-shake it
+
 ## 2.1.0
 
 ### Minor Changes
