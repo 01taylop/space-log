@@ -2,7 +2,7 @@
 
 [![Test](https://github.com/01taylop/space-log/actions/workflows/test.yml/badge.svg)](https://github.com/01taylop/space-log/actions/workflows/test.yml)
 
-![Node Versions Supported](https://img.shields.io/static/v1?label=node&message=>=18.18.0&color=blue)
+![Node Versions Supported](https://img.shields.io/node/v/space-log?color=blue)
 
 A utility for displaying data as formatted tables in the console. It automatically adjusts column widths, supports optional headings, and allows custom styling for individual data cells, making it ideal for CLI tools, build reports, and development dashboards.
 
@@ -23,7 +23,7 @@ Space Log solves this by providing a simple API that automatically handles all t
 
 ## Example
 
-![Regions of Japan](https://github.com/01taylop/space-log/blob/main/assets/results.png?raw=true)
+![Regions of Japan](https://github.com/01taylop/space-log/blob/main/assets/example.png?raw=true)
 
 ```js
 import chalk from 'chalk'

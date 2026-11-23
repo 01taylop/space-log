@@ -3,7 +3,6 @@ import chalk from 'chalk'
 
 import { spaceLog as spaceLogESM } from '../lib/index.js'
 
-// @ts-ignore - CJS build doesn't have type definitions
 const { spaceLog: spaceLogCJS } = await import('../lib/index.cjs')
 
 describe.each([
@@ -13,7 +12,7 @@ describe.each([
 
   const mockedConsoleLog = jest.spyOn(console, 'log').mockImplementation(text => text)
 
-  test('spaceLog works correctly', () => {
+  test('logging a table', () => {
     spaceLog({
       columnKeys: ['country', 'capital', 'flag'],
       headings: ['Country', 'Capital City', 'Flag'],

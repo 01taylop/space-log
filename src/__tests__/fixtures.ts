@@ -1,4 +1,4 @@
-type TestCountry = {
+interface TestCountry {
   capital?: string
   country: string
   flag: string

@@ -1,8 +1,13 @@
 import chalk from 'chalk'
 
-import type { SpaceLogConfig, SpaceLogData, SpaceLogDataItem } from './types'
+import type {
+  SpaceLogConfig,
+  SpaceLogData,
+  SpaceLogDataItem,
+  SpaceLogValue,
+} from './types'
 
-const spaceLog = <T extends SpaceLogDataItem>(config: SpaceLogConfig<T>, data: SpaceLogData<T>): void => {
+const spaceLog = <T extends SpaceLogDataItem<T>>(config: SpaceLogConfig<T>, data: SpaceLogData<T>): void => {
   const { columnKeys, headings, spaceSize = 1 } = config
 
   if (!columnKeys.length || !data.length) {
@@ -44,7 +49,7 @@ const spaceLog = <T extends SpaceLogDataItem>(config: SpaceLogConfig<T>, data: S
     columnKeys.forEach(key => {
       const text = item[key]?.toString() || '-'
       const spacing = columnWidths[key] - text.length
-      const theme = item[`${key}Theme`]
+      const theme = (item as Record<string, SpaceLogValue>)[`${key}Theme`]
       const styledText = theme && typeof theme === 'function' ? theme(text) : text
       line = `${line}${styledText}${' '.repeat(spacing)}`
     })
